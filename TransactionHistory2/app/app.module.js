@@ -9,18 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var forms_1 = require('@angular/forms');
 var platform_browser_1 = require('@angular/platform-browser');
 var transaction_history_component_1 = require('./transaction-history.component');
+var jha_pipe_1 = require('./jha.pipe');
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
             imports: [
+                forms_1.FormsModule,
                 platform_browser_1.BrowserModule
             ],
             declarations: [
-                transaction_history_component_1.TransactionHistoryComponent
+                transaction_history_component_1.TransactionHistoryComponent,
+                jha_pipe_1.JhaDateStringPipe,
+                jha_pipe_1.JhaMoneyPipe
             ],
             //providers: [
             //    HeroService
