@@ -13,6 +13,7 @@ var forms_1 = require('@angular/forms');
 var platform_browser_1 = require('@angular/platform-browser');
 var transaction_history_component_1 = require('./transaction-history.component');
 var jha_pipe_1 = require('./jha.pipe');
+var mock_episys_server_service_1 = require('./mock-episys-server.service');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -27,9 +28,9 @@ var AppModule = (function () {
                 jha_pipe_1.JhaDateStringPipe,
                 jha_pipe_1.JhaMoneyPipe
             ],
-            //providers: [
-            //    HeroService
-            //],
+            providers: [
+                mock_episys_server_service_1.MockEpisysServer // might be used anywhere in application
+            ],
             bootstrap: [
                 transaction_history_component_1.TransactionHistoryComponent
             ]

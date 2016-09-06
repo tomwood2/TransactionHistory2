@@ -4,6 +4,7 @@ import { BrowserModule }    from '@angular/platform-browser';
 
 import { TransactionHistoryComponent }  from './transaction-history.component';
 import { JhaDateStringPipe, JhaMoneyPipe } from './jha.pipe';
+import { MockEpisysServer } from './mock-episys-server.service';
 
 @NgModule({
     imports: [
@@ -15,9 +16,9 @@ import { JhaDateStringPipe, JhaMoneyPipe } from './jha.pipe';
 		JhaDateStringPipe,
 		JhaMoneyPipe
     ],
-    //providers: [
-    //    HeroService
-    //],
+    providers: [
+        MockEpisysServer        // might be used anywhere in application
+    ],
     bootstrap: [
         TransactionHistoryComponent
     ]

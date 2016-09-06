@@ -1,4 +1,5 @@
-﻿<div class="jha-toolbar">
+﻿
+<div class="jha-toolbar">
 	<ul class="jha-toolbar-list">
 		<li class="jha-toolbar-item jha-control"><select class="jha-toolbar-select" autofocus=""><option>All records</option></select></li>
 		<li class="jha-toolbar-item jha-toolbar-separator">|</li>
@@ -61,7 +62,6 @@
 			<th class="jha-text jha-column-heading">Description</th>
 		</tr>
 	</thead>
-	<!--	<tbody ng-repeat="message in model.messages.$items | filter: {Action :'AddSLTranHist'}" ng-include="message.CmtFlag == '1' ? 'views/transaction_history_comment_row.html' : 'views/transaction_history_transaction_row.html'"></tbody>-->
 	<tbody *ngFor="#message of messages.$items" [ngSwitch]="message.CmtFlag">
 		<tr *ngSwitchDefault>
 			<td class="jha-date">{{message.PostDate | jhaDateString }}</td>
