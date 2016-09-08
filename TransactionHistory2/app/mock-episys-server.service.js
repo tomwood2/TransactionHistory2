@@ -21,9 +21,4 @@ var MockEpisysServer = (function () {
     return MockEpisysServer;
 }());
 exports.MockEpisysServer = MockEpisysServer;
-//    receiveMessages(): Promise<Object> {
-//        return new Promise<Object>(resolve => setTimeout(resolve, 500))            // simulate delay
-//            .then(() => MESSAGES);
-//    }
-//}
 //# sourceMappingURL=mock-episys-server.service.js.map
