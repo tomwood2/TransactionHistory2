@@ -1,6 +1,6 @@
 ﻿/*toolbar styles*/
 
-input.jha-toolbar-input {
+/*input.jha-toolbar-input {
 	border-style: solid;
 	border-width: 1px;
 	border-color: lightgray;
@@ -31,7 +31,7 @@ button.jha-toolbar-push-button {
 
 div.jha-toolbar {
 	background: white;
-	background: -webkit-linear-gradient(white, #DDE8F5);	/*#CEE3F6*/
+	background: -webkit-linear-gradient(white, #DDE8F5);
 
 	background:    -moz-linear-gradient(white, #DDE8F5);
 	background:         linear-gradient(white, #DDE8F5);
@@ -39,22 +39,22 @@ div.jha-toolbar {
 }
 
 ul.jha-toolbar-list {
-	list-style-type: none; /*Removes the bullets. A navigation bar does not need list markers*/
-	margin-top: .5em; /*remove browser default settings*/
-	margin-bottom: .5em; /*remove browser default settings*/
+	list-style-type: none;
+	margin-top: .5em;
+	margin-bottom: .5em;
 	margin-right: .5em;
 	margin-left: .5em;
-	padding: 0; /*remove browser default settings*/
+	padding: 0;
 }
 
 li.jha-toolbar-item {
 	vertical-align: middle;
-	display: inline; /*By default, <li> elements are block elements. Here, we remove the line breaks before and after each list item, to display them on one line*/
+	display: inline;
 }
 
 li.jha-toolbar-separator {
 	color: gray;
-}
+} */
 
 /*list styles*/
 
@@ -62,9 +62,9 @@ li.jha-toolbar-separator {
 	width: 100%;
 	font-size: 1em;
 }
-.jha-column-header {
+/*.jha-column-header {
 	font-weight: normal;
-}
+}*/
 
 .jha-text {
 	text-align: left;
@@ -83,8 +83,8 @@ li.jha-toolbar-separator {
 	color: blue;
 }
 
-th.jha-column-heading {
+/*th.jha-column-heading {
 	font-weight: normal;
 	background-color: #f0f0f0;
-}
+}*/
 

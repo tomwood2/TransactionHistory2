@@ -9,17 +9,24 @@ class View {
 }
 
 class Toolbar {
-    fromDate: String = this.getFormatedDate(new Date());
+    fromDate: String = this.getFormatedDate(new Date(), false);
     toDate: String = this.fromDate;
+    fromDatePicker: String = this.getFormatedDate(new Date(), true);
+    toDatePicker: String = this.fromDatePicker;
 
     searchAmountType: number = 0;
 
-    getFormatedDate(date: Date): String {
+    getFormatedDate(date: Date, datePicker: Boolean): String {
         let day = date.getDate();
         let month = date.getMonth() + 1;
         let year = date.getFullYear();
 
-        return [year, this.pad(month, 2), this.pad(day, 2)].join("-");
+        if (datePicker) {
+            return [this.pad(month, 2), this.pad(day, 2), year].join("/");
+        }
+        else {
+            return [year, this.pad(month, 2), this.pad(day, 2)].join(":");
+        }
     }
 
     pad(num: number, size: number): String {

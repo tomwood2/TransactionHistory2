@@ -1,7 +1,6 @@
 ﻿body.jha-body {
 	font-family: tahoma;	/*, arial, tahoma, verdana, sans-serif, 'open sans'*/
-	font-size: 1.4em;
+	font-size: .8em;
 	margin: 0;
-	padding-top: 75px;		/*for bootstrap navbar-fixed-top*/
 }
 

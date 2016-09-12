@@ -1,84 +1,292 @@
 ﻿
-<div class="jha-toolbar">
-	<ul class="jha-toolbar-list">
-		<li class="jha-toolbar-item jha-control"><select class="jha-toolbar-select" autofocus=""><option>All records</option></select></li>
-		<li class="jha-toolbar-item jha-toolbar-separator">|</li>
-		<li class="jha-toolbar-item">From:</li>
-		<li class="jha-toolbar-item jha-control"><input type="date" class="jha-toolbar-input" [(ngModel)]="toolbar.fromDate" size="10" maxlength="10" placeholder="yyyy-MM-dd"/></li>
-		<li class="jha-toolbar-item jha-toolbar-separator">|</li>
-		<li class="jha-toolbar-item">To:</li>
-		<li class="jha-toolbar-item"><input type="date" class="jha-toolbar-input" [(ngModel)]="toolbar.toDate" size="10" maxlength="10" placeholder="yyyy-MM-dd"/></li>
-		<li class="jha-toolbar-item jha-toolbar-separator">|</li>
-		<li class="jha-toolbar-item"><input type="checkbox" class="jha-toolbar-checkbox" [(ngModel)]="view.showAdvanced">Advanced...</li>
-		<li class="jha-toolbar-item"><button class="jha-toolbar-push-button" type="button" (click)="refresh()">OK</button></li>
-		<li class="jha-toolbar-item"><button class="jha-toolbar-image-button" type="button" title="Toggle Detail Mode"><img src="assets/images/ViewExceptionItemList_16.png"/></button></li>
-		<li class="jha-toolbar-item"><button class="jha-toolbar-image-button" type="button" title="Print"><img src="assets/images/Print_16.png"/></button></li>
-		<li class="jha-toolbar-item"><button class="jha-toolbar-image-button" type="button" title="Email Document"><img src="assets/images/Email_16.png"/></button></li>
-	</ul>
-	<div [hidden]="!view.showAdvanced">
-		<ul class="jha-toolbar-list">
-			<li class="jha-toolbar-item">Type:</li>
-			<li class="jha-toolbar-item"><select class="jha-toolbar-select"><option>All Transactions</option></select></li>
-			<li class="jha-toolbar-item jha-toolbar-separator">|</li>
-			<li class="jha-toolbar-item"><input type="checkbox" class="jha-toolbar-checkbox" [(ngModel)]="view.showDrafts">Drafts</li>
-			<li class="jha-toolbar-item jha-toolbar-separator">|</li>
-			<li class="jha-toolbar-item">Drafts From:</li>
-			<li class="jha-toolbar-item"><input type=number class="jha-toolbar-input" id=draftFrom size="13" maxlength="13" placeholder="0" [disabled]="!view.showDrafts"/></li>
-			<li class="jha-toolbar-item jha-toolbar-separator">|</li>
-			<li class="jha-toolbar-item">To:</li>
-			<li class="jha-toolbar-item"><input type="number" class="jha-toolbar-input" id="draftTo" size="13" maxlength="13" placeholder="999999" [disabled]="!view.showDrafts"/></li>
-		</ul>
-		<ul class="jha-toolbar-list">
-			<li class="jha-toolbar-item">Amt. Search:</li>
-			<li class="jha-toolbar-item">
-				<select class="jha-toolbar-select" [(ngModel)]="toolbar.searchAmountType">
-					<option value="0"></option>
-					<option value="1">Balance Chg</option>
-					<option value="2">Trans Amt</option>
-				</select>
-			</li>
-			<li class="jha-toolbar-item jha-toolbar-separator">|</li>
-			<li class="jha-toolbar-item">Amt:</li>
-			<li class="jha-toolbar-item"><input type="number" class="jha-toolbar-input" id="searchAmount" size="13" maxlength="13" placeholder="0.00" [disabled]="toolbar.searchAmountType == 0" /></li>
-			<li class="jha-toolbar-item jha-toolbar-separator">|</li>
-			<li class="jha-toolbar-item">Var +/-:</li>
-			<li class="jha-toolbar-item"><input type="number" class="jha-toolbar-input" id="searchVariance" size="13" maxlength="13" placeholder="0.00" [disabled]="toolbar.searchAmountType == 0" /></li>
-		</ul>
-	</div>
-</div>
 
-<table class="jha-table">
-	<thead>
-		<tr class="jha-column-header">
-			<th class="jha-date jha-column-heading">Post Date</th>
-			<th class="jha-text jha-column-heading">ID</th>
-			<th class="jha-date jha-column-heading">Eff Date</th>
-			<th class="jha-text jha-column-heading">Transaction</th>
-			<th class="jha-money jha-column-heading">Trans Amt</th>
-			<th class="jha-money jha-column-heading">Balance Chge</th>
-			<th class="jha-money jha-column-heading">Int/Pnlty</th>
-			<th class="jha-money jha-column-heading">Fees</th>
-			<th class="jha-money jha-column-heading">New Balance</th>
-			<th class="jha-text jha-column-heading">Description</th>
-		</tr>
-	</thead>
-	<tbody *ngFor="#message of messages.$items" [ngSwitch]="message.CmtFlag">
-		<tr *ngSwitchDefault>
-			<td class="jha-date">{{message.PostDate | jhaDateString }}</td>
-			<td class="jha-text">{{message.IDType == '0' ? 'S' : 'L'}} {{message.ID}}</td>
-			<td class="jha-date">{{message.EffDate | jhaDateString}}</td>
-			<td class="jha-text">{{message.Tran }}</td>
-			<td class="jha-money">{{message.TranAmount | jhaMoney | number:'1.2-2' }}</td>
-			<td class="jha-money">{{message.BalChg | jhaMoney | number:'1.2-2' }}</td>
-			<td class="jha-money">{{message.IntPen | jhaMoney | number:'1.2-2' }}</td>
-			<td class="jha-money">{{message.Fee | jhaMoney | number:'1.2-2' }}</td>
-			<td class="jha-money">{{message.NewBal | jhaMoney | number:'1.2-2' }}</td>
-			<td class="jha-text">{{message.description}}</td>
-		</tr>
-		<tr *ngSwitchWhen="'1'">
-			<td colspan="3"></td>
-			<td colspan="7" class="jha-comment">{{message.Comment}}</td>
-		</tr>
-	</tbody>
+<div class="container">
 
-</table>
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<h5 class="navbar-brand">Transaction History</h5>
+			</div>
+			<div>
+				<button type="button" class="btn navbar-btn" aria-label="Left Align" title="Toggle Detail Mode">
+					<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+				</button>
+				<button type="button" class="btn navbar-btn" aria-label="Left Align" title="Print">
+					<span class="glyphicon glyphicon-print" aria-hidden="true"></span>
+				</button>
+				<button type="button" class="btn navbar-btn" aria-label="Left Align" title="Email Document">
+					<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+				</button>
+			</div>
+		</div>
+	</nav>
+
+				<div class="row">
+					<!--<div class="col-md-2">-->
+					<div class="card col-md-2">
+						<!--<h3 class="card-header">Select By</h3>-->
+
+						<div class="card-header">
+							<!--<h3>Search</h3>-->
+
+							<div class="btn-toolbar" role="toolbar">
+								<div class="btn-group" role="group">
+									<button type="button" class="btn navbar-btn" aria-label="Left Align" data-toggle="button" aria-pressed="false" autocomplete="off"
+											(click)="view.showAdvanced = !view.showAdvanced" title="Advanced Search">
+										<span class="glyphicon glyphicon-expand" aria-hidden="true"></span>
+									</button>
+									<button type="button" class="btn navbar-btn" aria-label="Left Align" data-toggle="button"
+											aria-pressed="false" autocomplete="off" (click)="view.showDrafts = !view.showDrafts"
+											[disabled]="!view.showAdvanced" title="Drafts Search">
+										<span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span>
+									</button>
+									<button type="button" class="btn navbar-btn" aria-label="Left Align" autocomplete="off"
+											(click)="refresh()" title="Select Matches">
+										<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+									</button>
+								</div>
+							</div>
+
+
+							<!--<nav class="nav navbar">
+								<div class="navbar-header">
+									<button type="button" class="btn navbar-btn" aria-label="Left Align" data-toggle="button" aria-pressed="false" autocomplete="off"
+										(click)="view.showAdvanced = !view.showAdvanced" title="Advanced Search">
+										<span class="glyphicon glyphicon-expand" aria-hidden="true"></span>
+									</button>
+									<button type="button" class="btn navbar-btn" aria-label="Left Align" data-toggle="button"
+											aria-pressed="false" autocomplete="off" (click)="view.showDrafts = !view.showDrafts"
+											[disabled]="!view.showAdvanced" title="Drafts Search">
+										<span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span>
+									</button>
+									<button type="button" class="btn navbar-btn" aria-label="Left Align" autocomplete="off"
+										(click)="refresh()" title="Select Matches">
+										<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+									</button>
+								</div>
+							</nav>-->
+						</div>
+						<div class="card-block">
+
+							<div class="form-group">
+								<select class="form-control" autofocus><option>All records</option></select>
+							</div>
+
+							<!--<div class="form-group">
+								<label for="fromDate" class="control-label">From Date:</label>
+								<div class="input-group">
+									<input type="text" class="form-control" [(ngModel)]="toolbar.fromDatePicker"/>
+									<div class="input-group-addon">
+										<span class="glyphicon glyphicon-th"></span>
+										<button type="button" class="btn btn-outline-primary" (click)="isCollapsed = !isCollapsed"><span class="glyphicon glyphicon-th"></span></button>
+									</div>
+								</div>
+								<div [ngbCollapse]="isCollapsed">
+									<ngb-datepicker class="form-control" [(ngModel)]="toolbar.fromDatePicker"></ngb-datepicker>
+								</div>
+							</div>-->
+							<!--<div class="form-group">
+								<label for="fromDate" class="control-label">From Date:</label>
+								<div class="input-group date" data-provide="datepicker">
+									<ngb-datepicker class="form-control" [(ngModel)]="toolbar.fromDatePicker"></ngb-datepicker>
+									<div class="input-group-addon">
+										<span class="glyphicon glyphicon-th"></span>
+									</div>
+								</div>
+							</div>-->
+							<!--fromDatePicker={{toolbar.fromDatePicker}}
+							isCollapsed={{isCollapsed}}-->
+
+
+							<div class="form-group">
+								<label for="fromDate" class="control-label">From Date:</label>
+								
+								<div class="input-group date" data-provide="datepicker">
+									<input type="text" class="form-control" [(ngModel)]="toolbar.fromDatePicker" data-date-format="yyyy-mm-dd">
+									<div class="input-group-addon">
+										<span class="glyphicon glyphicon-th"></span>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="fromDate" class="control-label">To Date:</label>
+								<div class="input-group date" data-provide="datepicker">
+									<input type="text" class="form-control" [(ngModel)]="toolbar.toDatePicker">
+									<div class="input-group-addon">
+										<span class="glyphicon glyphicon-th"></span>
+									</div>
+								</div>
+							</div>
+
+
+							<!--<div data-toggle="buttons">-->
+							<!--<label class="btn form-control">
+								<input type="checkbox" [(ngModel)]="view.showAdvanced"> Advanced...
+							</label>-->
+							<!--</div>-->
+							<!--<button class="form-control btn" type="button" data-toggle="collapse" data-target="#advanced" aria-expanded="false" aria-controls="advanced">
+								Advanced...
+							</button>
+							<div class="collapse" id="advanced">-->
+							<div [hidden]="!view.showAdvanced">
+								<div class="form-group">
+									<label for="transactionType" class="control-label">Type:</label>
+									<select id="transactionType" class="form-control"><option>All Transactions</option></select>
+								</div>
+
+								<!--<div class="form-group">
+									<input type="checkbox" class="jha-toolbar-checkbox" [(ngModel)]="view.showDrafts">Drafts
+								</div>-->
+								<!--<div data-toggle="buttons">-->
+								<!--<label class="btn form-control">
+									<input type="checkbox" [(ngModel)]="view.showDrafts"> Select Drafts...
+								</label>-->
+								<!--</div>-->
+								<!--<button class="form-control btn" type="button" data-toggle="collapse" data-target="#drafts" aria-expanded="false" aria-controls="drafts">
+									Drafts...
+								</button>
+								<div class="collapse" id="drafts">-->
+								<div [hidden]="!view.showDrafts">
+									<div class="form-group">
+										<label for="transactionType" class="control-label">Drafts From:</label>
+										<input type=number class="form-control" id=draftFrom size="13" maxlength="13" placeholder="0" [disabled]="!view.showDrafts" />
+									</div>
+
+									<div class="form-group">
+										<label for="transactionType" class="control-label">Drafts To:</label>
+										<input type="number" class="form-control" id="draftTo" size="13" maxlength="13" placeholder="999999" [disabled]="!view.showDrafts" />
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="transactionType" class="control-label">Amount Search:</label>
+									<select class="form-control" [(ngModel)]="toolbar.searchAmountType">
+										<option value="0">None</option>
+										<option value="1">Balance Change</option>
+										<option value="2">Transaction Amount</option>
+									</select>
+								</div>
+
+								<div [hidden]="toolbar.searchAmountType == 0">
+									<div class="form-group">
+										<label for="transactionType" class="control-label">Amt:</label>
+										<input type="number" class="form-control" size="13" maxlength="13" placeholder="0.00" [disabled]="toolbar.searchAmountType == 0" />
+									</div>
+
+									<div class="form-group">
+										<label for="transactionType" class="control-label">Var +/-:</label>
+										<input type="number" class="form-control" size="13" maxlength="13" placeholder="0.00" [disabled]="toolbar.searchAmountType == 0" />
+									</div>
+								</div>
+
+							</div>	<!--advanced collapse div-->
+						</div> <!--card block-->
+					</div>  <!--card-->
+					<!--</div>-->	<!--col-->
+
+
+					<!--<div class="col-md-10">-->
+						<div class="card col-md-10">
+							<!--<h3 class="card-header">Matches</h3>-->
+							<div class="card-block">
+
+
+								<!--<div class="jha-toolbar">
+									<ul class="jha-toolbar-list">
+										<li class="jha-toolbar-item jha-control"><select class="jha-toolbar-select" autofocus=""><option>All records</option></select></li>
+										<li class="jha-toolbar-item jha-toolbar-separator">|</li>
+										<li class="jha-toolbar-item">From:</li>
+										<li class="jha-toolbar-item jha-control"><input type="date" class="jha-toolbar-input" [(ngModel)]="toolbar.fromDate" size="10" maxlength="10" placeholder="yyyy-MM-dd" /></li>
+										<li class="jha-toolbar-item jha-toolbar-separator">|</li>
+										<li class="jha-toolbar-item">To:</li>
+										<li class="jha-toolbar-item"><input type="date" class="jha-toolbar-input" [(ngModel)]="toolbar.toDate" size="10" maxlength="10" placeholder="yyyy-MM-dd" /></li>
+										<li class="jha-toolbar-item jha-toolbar-separator">|</li>
+										<li class="jha-toolbar-item"><input type="checkbox" class="jha-toolbar-checkbox" [(ngModel)]="view.showAdvanced">Advanced...</li>
+										<li class="jha-toolbar-item"><button class="jha-toolbar-push-button" type="button" (click)="refresh()">OK</button></li>
+										<li class="jha-toolbar-item"><button class="jha-toolbar-image-button" type="button" title="Toggle Detail Mode"><img src="assets/images/ViewExceptionItemList_16.png" /></button></li>
+										<li class="jha-toolbar-item"><button class="jha-toolbar-image-button" type="button" title="Print"><img src="assets/images/Print_16.png" /></button></li>
+										<li class="jha-toolbar-item"><button class="jha-toolbar-image-button" type="button" title="Email Document"><img src="assets/images/Email_16.png" /></button></li>
+									</ul>
+									<div [hidden]="!view.showAdvanced">
+										<ul class="jha-toolbar-list">
+											<li class="jha-toolbar-item">Type:</li>
+											<li class="jha-toolbar-item"><select class="jha-toolbar-select"><option>All Transactions</option></select></li>
+											<li class="jha-toolbar-item jha-toolbar-separator">|</li>
+											<li class="jha-toolbar-item"><input type="checkbox" class="jha-toolbar-checkbox" [(ngModel)]="view.showDrafts">Drafts</li>
+											<li class="jha-toolbar-item jha-toolbar-separator">|</li>
+											<li class="jha-toolbar-item">Drafts From:</li>
+											<li class="jha-toolbar-item"><input type=number class="jha-toolbar-input" id=draftFrom size="13" maxlength="13" placeholder="0" [disabled]="!view.showDrafts" /></li>
+											<li class="jha-toolbar-item jha-toolbar-separator">|</li>
+											<li class="jha-toolbar-item">To:</li>
+											<li class="jha-toolbar-item"><input type="number" class="jha-toolbar-input" id="draftTo" size="13" maxlength="13" placeholder="999999" [disabled]="!view.showDrafts" /></li>
+										</ul>
+										<ul class="jha-toolbar-list">
+											<li class="jha-toolbar-item">Amt. Search:</li>
+											<li class="jha-toolbar-item">
+												<select class="jha-toolbar-select" [(ngModel)]="toolbar.searchAmountType">
+													<option value="0"></option>
+													<option value="1">Balance Chg</option>
+													<option value="2">Trans Amt</option>
+												</select>
+											</li>
+											<li class="jha-toolbar-item jha-toolbar-separator">|</li>
+											<li class="jha-toolbar-item">Amt:</li>
+											<li class="jha-toolbar-item"><input type="number" class="jha-toolbar-input" id="searchAmount" size="13" maxlength="13" placeholder="0.00" [disabled]="toolbar.searchAmountType == 0" /></li>
+											<li class="jha-toolbar-item jha-toolbar-separator">|</li>
+											<li class="jha-toolbar-item">Var +/-:</li>
+											<li class="jha-toolbar-item"><input type="number" class="jha-toolbar-input" id="searchVariance" size="13" maxlength="13" placeholder="0.00" [disabled]="toolbar.searchAmountType == 0" /></li>
+										</ul>
+									</div>
+								</div>-->
+
+								<table class="table table-striped table-condensed table-hover">
+									<thead>
+										<tr class="jha-column-header">
+											<th class="jha-date jha-column-heading">Post Date</th>
+											<th class="jha-text jha-column-heading">ID</th>
+											<th class="jha-date jha-column-heading">Eff Date</th>
+											<th class="jha-text jha-column-heading">Transaction</th>
+											<th class="jha-money jha-column-heading">Trans Amt</th>
+											<th class="jha-money jha-column-heading">Balance Chge</th>
+											<th class="jha-money jha-column-heading">Int/Pnlty</th>
+											<th class="jha-money jha-column-heading">Fees</th>
+											<th class="jha-money jha-column-heading">New Balance</th>
+											<th class="jha-text jha-column-heading">Description</th>
+										</tr>
+									</thead>
+									<tbody *ngFor="#message of messages.$items" [ngSwitch]="message.CmtFlag">
+										<tr *ngSwitchDefault>
+											<td class="jha-date">{{message.PostDate | jhaDateString }}</td>
+											<td class="jha-text">{{message.IDType == '0' ? 'S' : 'L'}} {{message.ID}}</td>
+											<td class="jha-date">{{message.EffDate | jhaDateString}}</td>
+											<td class="jha-text">{{message.Tran }}</td>
+											<td class="jha-money">{{message.TranAmount | jhaMoney | number:'1.2-2' }}</td>
+											<td class="jha-money">{{message.BalChg | jhaMoney | number:'1.2-2' }}</td>
+											<td class="jha-money">{{message.IntPen | jhaMoney | number:'1.2-2' }}</td>
+											<td class="jha-money">{{message.Fee | jhaMoney | number:'1.2-2' }}</td>
+											<td class="jha-money">{{message.NewBal | jhaMoney | number:'1.2-2' }}</td>
+											<td class="jha-text">{{message.description}}</td>
+										</tr>
+										<tr *ngSwitchWhen="'1'">
+											<td colspan="3"></td>
+											<td colspan="7" class="jha-comment">{{message.Comment}}</td>
+										</tr>
+									</tbody>
+
+								</table>
+
+
+
+							</div> <!--card block-->
+						</div>  <!--card-->
+					<!--</div>-->	<!--col-->
+
+
+
+				</div>	<!--row-->
+
+
+			</div>	<!--container-->
+
+

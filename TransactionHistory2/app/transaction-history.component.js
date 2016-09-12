@@ -19,15 +19,22 @@ var View = (function () {
 }());
 var Toolbar = (function () {
     function Toolbar() {
-        this.fromDate = this.getFormatedDate(new Date());
+        this.fromDate = this.getFormatedDate(new Date(), false);
         this.toDate = this.fromDate;
+        this.fromDatePicker = this.getFormatedDate(new Date(), true);
+        this.toDatePicker = this.fromDatePicker;
         this.searchAmountType = 0;
     }
-    Toolbar.prototype.getFormatedDate = function (date) {
+    Toolbar.prototype.getFormatedDate = function (date, datePicker) {
         var day = date.getDate();
         var month = date.getMonth() + 1;
         var year = date.getFullYear();
-        return [year, this.pad(month, 2), this.pad(day, 2)].join("-");
+        if (datePicker) {
+            return [this.pad(month, 2), this.pad(day, 2), year].join("/");
+        }
+        else {
+            return [year, this.pad(month, 2), this.pad(day, 2)].join(":");
+        }
     };
     Toolbar.prototype.pad = function (num, size) {
         var s = "000000000" + num;
