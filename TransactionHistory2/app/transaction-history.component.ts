@@ -5,7 +5,8 @@ import { TransactionHistoryService } from './transaction-history.service';
 
 class View {
 	showAdvanced: boolean = false;
-	showDrafts:boolean = false;
+	showDrafts: boolean = false;
+	showFilter: boolean = true;
 }
 
 class Toolbar {

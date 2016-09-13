@@ -1,5 +1,11 @@
 ﻿/*toolbar styles*/
 
+/*needed to vertically center navbar-btn elements default is 15 so they appear too high*/
+
+.navbar button {
+ margin-top: 22px;
+}
+
 /*input.jha-toolbar-input {
 	border-style: solid;
 	border-width: 1px;

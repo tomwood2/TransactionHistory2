@@ -8,13 +8,25 @@
 				<h5 class="navbar-brand">Transaction History</h5>
 			</div>
 			<div>
-				<button type="button" class="btn navbar-btn" aria-label="Left Align" title="Toggle Detail Mode">
+				<!--(click)="view.showFilter = !view.showFilter"-->
+				<button type="button" class="btn navbar-btn active" title="Show Inputs"
+				        data-toggle="button" aria-pressed="True"
+						(click)="view.showFilter = !view.showFilter"
+						aria-expanded="true" aria-controls="inputsCard">
+					<span class="glyphicon glyphicon-filter" aria-hidden="true"></span>
+				</button>
+				<!--<button type="button" class="btn navbar-btn pull-left" title="Show Inputs"
+						data-toggle="collapse" data-target="#inputsCard"
+						aria-expanded="true" aria-controls="inputsCard">
+					<span class="glyphicon glyphicon-filter" aria-hidden="true"></span>
+				</button>-->
+				<button type="button" class="btn navbar-btn" title="Toggle Detail Mode">
 					<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
 				</button>
-				<button type="button" class="btn navbar-btn" aria-label="Left Align" title="Print">
+				<button type="button" class="btn navbar-btn" title="Print">
 					<span class="glyphicon glyphicon-print" aria-hidden="true"></span>
 				</button>
-				<button type="button" class="btn navbar-btn" aria-label="Left Align" title="Email Document">
+				<button type="button" class="btn navbar-btn" title="Email Document">
 					<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
 				</button>
 			</div>
@@ -23,7 +35,9 @@
 
 				<div class="row">
 					<!--<div class="col-md-2">-->
-					<div class="card col-md-2">
+				<!--<div class="card col-md-2 collapse in" id="inputsCard">-->
+				<div class="card col-md-2" [hidden]="!view.showFilter">
+						<!-- [hidden]="!view.showFilter" -->
 						<!--<h3 class="card-header">Select By</h3>-->
 
 						<div class="card-header">
@@ -31,6 +45,11 @@
 
 							<div class="btn-toolbar" role="toolbar">
 								<div class="btn-group" role="group">
+									<!--<button type="button" class="btn navbar-btn" title="Advanced Search"
+						data-toggle="collapse" data-target="#advanced"
+						aria-expanded="true" aria-controls="advanced">
+						<span class="glyphicon glyphicon-expand" aria-hidden="true"></span>
+					</button>-->
 									<button type="button" class="btn navbar-btn" aria-label="Left Align" data-toggle="button" aria-pressed="false" autocomplete="off"
 											(click)="view.showAdvanced = !view.showAdvanced" title="Advanced Search">
 										<span class="glyphicon glyphicon-expand" aria-hidden="true"></span>
@@ -47,24 +66,6 @@
 								</div>
 							</div>
 
-
-							<!--<nav class="nav navbar">
-								<div class="navbar-header">
-									<button type="button" class="btn navbar-btn" aria-label="Left Align" data-toggle="button" aria-pressed="false" autocomplete="off"
-										(click)="view.showAdvanced = !view.showAdvanced" title="Advanced Search">
-										<span class="glyphicon glyphicon-expand" aria-hidden="true"></span>
-									</button>
-									<button type="button" class="btn navbar-btn" aria-label="Left Align" data-toggle="button"
-											aria-pressed="false" autocomplete="off" (click)="view.showDrafts = !view.showDrafts"
-											[disabled]="!view.showAdvanced" title="Drafts Search">
-										<span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span>
-									</button>
-									<button type="button" class="btn navbar-btn" aria-label="Left Align" autocomplete="off"
-										(click)="refresh()" title="Select Matches">
-										<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-									</button>
-								</div>
-							</nav>-->
 						</div>
 						<div class="card-block">
 
@@ -72,35 +73,9 @@
 								<select class="form-control" autofocus><option>All records</option></select>
 							</div>
 
-							<!--<div class="form-group">
-								<label for="fromDate" class="control-label">From Date:</label>
-								<div class="input-group">
-									<input type="text" class="form-control" [(ngModel)]="toolbar.fromDatePicker"/>
-									<div class="input-group-addon">
-										<span class="glyphicon glyphicon-th"></span>
-										<button type="button" class="btn btn-outline-primary" (click)="isCollapsed = !isCollapsed"><span class="glyphicon glyphicon-th"></span></button>
-									</div>
-								</div>
-								<div [ngbCollapse]="isCollapsed">
-									<ngb-datepicker class="form-control" [(ngModel)]="toolbar.fromDatePicker"></ngb-datepicker>
-								</div>
-							</div>-->
-							<!--<div class="form-group">
-								<label for="fromDate" class="control-label">From Date:</label>
-								<div class="input-group date" data-provide="datepicker">
-									<ngb-datepicker class="form-control" [(ngModel)]="toolbar.fromDatePicker"></ngb-datepicker>
-									<div class="input-group-addon">
-										<span class="glyphicon glyphicon-th"></span>
-									</div>
-								</div>
-							</div>-->
-							<!--fromDatePicker={{toolbar.fromDatePicker}}
-							isCollapsed={{isCollapsed}}-->
-
-
 							<div class="form-group">
 								<label for="fromDate" class="control-label">From Date:</label>
-								
+
 								<div class="input-group date" data-provide="datepicker">
 									<input type="text" class="form-control" [(ngModel)]="toolbar.fromDatePicker" data-date-format="yyyy-mm-dd">
 									<div class="input-group-addon">
@@ -120,15 +95,7 @@
 							</div>
 
 
-							<!--<div data-toggle="buttons">-->
-							<!--<label class="btn form-control">
-								<input type="checkbox" [(ngModel)]="view.showAdvanced"> Advanced...
-							</label>-->
-							<!--</div>-->
-							<!--<button class="form-control btn" type="button" data-toggle="collapse" data-target="#advanced" aria-expanded="false" aria-controls="advanced">
-								Advanced...
-							</button>
-							<div class="collapse" id="advanced">-->
+							<!--<div class="collapse" id="advanced">-->
 							<div [hidden]="!view.showAdvanced">
 								<div class="form-group">
 									<label for="transactionType" class="control-label">Type:</label>
@@ -136,17 +103,17 @@
 								</div>
 
 								<!--<div class="form-group">
-									<input type="checkbox" class="jha-toolbar-checkbox" [(ngModel)]="view.showDrafts">Drafts
-								</div>-->
+					<input type="checkbox" class="jha-toolbar-checkbox" [(ngModel)]="view.showDrafts">Drafts
+				</div>-->
 								<!--<div data-toggle="buttons">-->
 								<!--<label class="btn form-control">
-									<input type="checkbox" [(ngModel)]="view.showDrafts"> Select Drafts...
-								</label>-->
+					<input type="checkbox" [(ngModel)]="view.showDrafts"> Select Drafts...
+				</label>-->
 								<!--</div>-->
 								<!--<button class="form-control btn" type="button" data-toggle="collapse" data-target="#drafts" aria-expanded="false" aria-controls="drafts">
-									Drafts...
-								</button>
-								<div class="collapse" id="drafts">-->
+					Drafts...
+				</button>
+				<div class="collapse" id="drafts">-->
 								<div [hidden]="!view.showDrafts">
 									<div class="form-group">
 										<label for="transactionType" class="control-label">Drafts From:</label>
@@ -180,7 +147,7 @@
 									</div>
 								</div>
 
-							</div>	<!--advanced collapse div-->
+							</div> <!--advanced collapse div-->
 						</div> <!--card block-->
 					</div>  <!--card-->
 					<!--</div>-->	<!--col-->

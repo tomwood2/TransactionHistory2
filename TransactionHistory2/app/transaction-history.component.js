@@ -14,6 +14,7 @@ var View = (function () {
     function View() {
         this.showAdvanced = false;
         this.showDrafts = false;
+        this.showFilter = true;
     }
     return View;
 }());
