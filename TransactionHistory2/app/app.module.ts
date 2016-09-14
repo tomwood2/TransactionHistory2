@@ -6,8 +6,8 @@ import { HttpModule }		from '@angular/http';
 
 import { TransactionHistoryComponent }  from './transaction-history.component';
 import { JhaDateStringPipe, JhaMoneyPipe } from './jha.pipe';
-import { EpisysServer } from './episys-server.service';
-import { MockEpisysServer } from './mock-episys-server.service';
+import { EpisysServerService } from './episys-server.service';
+import { MockEpisysServerService } from './mock-episys-server.service';
 
 @NgModule({
     imports: [
@@ -22,8 +22,8 @@ import { MockEpisysServer } from './mock-episys-server.service';
 		JhaMoneyPipe
     ],
     providers: [
-        MockEpisysServer,        // accessible anywhere in application
-        EpisysServer        // accessible anywhere in application
+        MockEpisysServerService,        // accessible anywhere in application
+        EpisysServerService        // accessible anywhere in application
     ],
     bootstrap: [
         TransactionHistoryComponent

@@ -20,27 +20,27 @@ var Request = (function () {
     }
     return Request;
 }());
-var EpisysServer = (function () {
-    function EpisysServer(http) {
+var EpisysServerService = (function () {
+    function EpisysServerService(http) {
         this.http = http;
         this.questUrl = 'http://localhost:7895';
     }
-    EpisysServer.prototype.receiveMessages = function (serviceName, methodName, args) {
+    EpisysServerService.prototype.receiveMessages = function (serviceName, methodName, args) {
         var request = new Request(serviceName, methodName, args);
         return this.http.post(this.questUrl, JSON.stringify(request))
             .toPromise()
             .then(function (response) { return response.json(); })
             .catch(this.handleError);
     };
-    EpisysServer.prototype.handleError = function (error) {
+    EpisysServerService.prototype.handleError = function (error) {
         console.error('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);
     };
-    EpisysServer = __decorate([
+    EpisysServerService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])
-    ], EpisysServer);
-    return EpisysServer;
+    ], EpisysServerService);
+    return EpisysServerService;
 }());
-exports.EpisysServer = EpisysServer;
+exports.EpisysServerService = EpisysServerService;
 //# sourceMappingURL=episys-server.service.js.map

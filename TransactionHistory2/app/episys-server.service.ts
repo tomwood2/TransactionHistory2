@@ -20,7 +20,7 @@ class Request {
 }
 
 @Injectable()
-export class EpisysServer {
+export class EpisysServerService {
 
 	private questUrl = 'http://localhost:7895';
 

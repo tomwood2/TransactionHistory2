@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var episys_server_service_1 = require('./episys-server.service');
 var TransactionHistoryService = (function () {
-    //    constructor(private episysService: MockEpisysServer) { }
+    //    constructor(private episysService: MockEpisysServerService) { }
     function TransactionHistoryService(episysService) {
         this.episysService = episysService;
     }
@@ -27,7 +27,7 @@ var TransactionHistoryService = (function () {
     };
     TransactionHistoryService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [episys_server_service_1.EpisysServer])
+        __metadata('design:paramtypes', [episys_server_service_1.EpisysServerService])
     ], TransactionHistoryService);
     return TransactionHistoryService;
 }());

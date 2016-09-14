@@ -33,8 +33,8 @@ var AppModule = (function () {
                 jha_pipe_1.JhaMoneyPipe
             ],
             providers: [
-                mock_episys_server_service_1.MockEpisysServer,
-                episys_server_service_1.EpisysServer // accessible anywhere in application
+                mock_episys_server_service_1.MockEpisysServerService,
+                episys_server_service_1.EpisysServerService // accessible anywhere in application
             ],
             bootstrap: [
                 transaction_history_component_1.TransactionHistoryComponent
