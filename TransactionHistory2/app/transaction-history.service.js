@@ -9,15 +9,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var mock_episys_server_service_1 = require('./mock-episys-server.service');
+var episys_server_service_1 = require('./episys-server.service');
 var TransactionHistoryService = (function () {
+    //    constructor(private episysService: MockEpisysServer) { }
     function TransactionHistoryService(episysService) {
         this.episysService = episysService;
     }
     // return the result of .then which is a promise
     TransactionHistoryService.prototype.getMessages = function () {
         var _this = this;
-        return this.episysService.receiveMessages().then(function (messages) { return _this.getFilteredMessages(messages); });
+        return this.episysService.receiveMessages("serviceName", "methodName", "args").then(function (messages) { return _this.getFilteredMessages(messages); });
     };
     TransactionHistoryService.prototype.getFilteredMessages = function (messages) {
         return {
@@ -26,7 +27,7 @@ var TransactionHistoryService = (function () {
     };
     TransactionHistoryService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [mock_episys_server_service_1.MockEpisysServer])
+        __metadata('design:paramtypes', [episys_server_service_1.EpisysServer])
     ], TransactionHistoryService);
     return TransactionHistoryService;
 }());

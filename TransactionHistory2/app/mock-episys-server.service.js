@@ -13,7 +13,7 @@ var MESSAGES = { "$items": [{ "$tag": "AcctMgr", "Action": "AddSLTranHist", "Acc
 var MockEpisysServer = (function () {
     function MockEpisysServer() {
     }
-    MockEpisysServer.prototype.receiveMessages = function () { return Promise.resolve(MESSAGES); };
+    MockEpisysServer.prototype.receiveMessages = function (serviceName, methodName, args) { return Promise.resolve(MESSAGES); };
     MockEpisysServer = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])

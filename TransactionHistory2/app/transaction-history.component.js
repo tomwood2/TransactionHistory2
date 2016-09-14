@@ -49,14 +49,11 @@ var TransactionHistoryComponent = (function () {
         this.view = new View();
         this.toolbar = new Toolbar();
         this.messages = {};
-        this.refresh = function () {
-        };
     }
     TransactionHistoryComponent.prototype.ngOnInit = function () { this.getMessages(); };
     TransactionHistoryComponent.prototype.getMessages = function () {
         var _this = this;
         this.transactionHistoryService.getMessages().then(function (messages) { return _this.messages = messages; });
-        //this.messages = this.transactionHistoryService.getMessages();
     };
     TransactionHistoryComponent = __decorate([
         core_1.Component({

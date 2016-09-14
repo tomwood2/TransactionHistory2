@@ -5,9 +5,5 @@ const MESSAGES: Object = { "$items": [{ "$tag": "AcctMgr", "Action": "AddSLTranH
 
 @Injectable()
 export class MockEpisysServer {
-        receiveMessages(): Promise<Object> { return Promise.resolve(MESSAGES); }
-//    receiveMessages(): Promise<Object> {
-//        return new Promise<Object>(resolve => setTimeout(resolve, 500))            // simulate delay
-//            .then(() => MESSAGES);
-//    }
+	receiveMessages(serviceName: String, methodName: String, args: String): Promise<Object> { return Promise.resolve(MESSAGES); }
 }

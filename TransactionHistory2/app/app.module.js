@@ -11,9 +11,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var forms_1 = require('@angular/forms');
 var platform_browser_1 = require('@angular/platform-browser');
-var ng_bootstrap_1 = require('@ng-bootstrap/ng-bootstrap');
+var http_1 = require('@angular/http');
+//import { NgbModule }		from '@ng-bootstrap/ng-bootstrap';
 var transaction_history_component_1 = require('./transaction-history.component');
 var jha_pipe_1 = require('./jha.pipe');
+var episys_server_service_1 = require('./episys-server.service');
 var mock_episys_server_service_1 = require('./mock-episys-server.service');
 var AppModule = (function () {
     function AppModule() {
@@ -21,9 +23,9 @@ var AppModule = (function () {
     AppModule = __decorate([
         core_1.NgModule({
             imports: [
-                ng_bootstrap_1.NgbModule,
                 forms_1.FormsModule,
-                platform_browser_1.BrowserModule
+                platform_browser_1.BrowserModule,
+                http_1.HttpModule
             ],
             declarations: [
                 transaction_history_component_1.TransactionHistoryComponent,
@@ -31,7 +33,8 @@ var AppModule = (function () {
                 jha_pipe_1.JhaMoneyPipe
             ],
             providers: [
-                mock_episys_server_service_1.MockEpisysServer // might be used anywhere in application
+                mock_episys_server_service_1.MockEpisysServer,
+                episys_server_service_1.EpisysServer // accessible anywhere in application
             ],
             bootstrap: [
                 transaction_history_component_1.TransactionHistoryComponent

@@ -55,10 +55,5 @@ export class TransactionHistoryComponent implements OnInit {
     getMessages(): void {
 
         this.transactionHistoryService.getMessages().then(messages => this.messages = messages);
-        //this.messages = this.transactionHistoryService.getMessages();
     }
-
-	refresh = function() {
-		
-	}
 }
