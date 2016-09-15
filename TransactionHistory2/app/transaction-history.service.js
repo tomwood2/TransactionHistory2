@@ -14,7 +14,7 @@ var TransactionHistoryService = (function () {
     function TransactionHistoryService(episysService) {
         this.episysService = episysService;
     }
-    //    constructor(private episysService: EpisysServer) { }
+    //    constructor(private episysService: EpisysServerService) { }
     // return the result of .then which is a promise
     TransactionHistoryService.prototype.getMessages = function () {
         var _this = this;
@@ -27,7 +27,7 @@ var TransactionHistoryService = (function () {
     };
     TransactionHistoryService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [mock_episys_server_service_1.MockEpisysServer])
+        __metadata('design:paramtypes', [mock_episys_server_service_1.MockEpisysServerService])
     ], TransactionHistoryService);
     return TransactionHistoryService;
 }());
