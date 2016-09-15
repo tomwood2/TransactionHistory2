@@ -9,12 +9,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var episys_server_service_1 = require('./episys-server.service');
+var mock_episys_server_service_1 = require('./mock-episys-server.service');
 var TransactionHistoryService = (function () {
-    //    constructor(private episysService: MockEpisysServer) { }
     function TransactionHistoryService(episysService) {
         this.episysService = episysService;
     }
+    //    constructor(private episysService: EpisysServer) { }
     // return the result of .then which is a promise
     TransactionHistoryService.prototype.getMessages = function () {
         var _this = this;
@@ -27,7 +27,7 @@ var TransactionHistoryService = (function () {
     };
     TransactionHistoryService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [episys_server_service_1.EpisysServer])
+        __metadata('design:paramtypes', [mock_episys_server_service_1.MockEpisysServer])
     ], TransactionHistoryService);
     return TransactionHistoryService;
 }());

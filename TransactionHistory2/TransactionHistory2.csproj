@@ -69,14 +69,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\views\transaction-history.component.html" />
-    <Content Include="assets\images\Email_16.png" />
-    <Content Include="assets\images\Print_16.png" />
-    <Content Include="assets\images\ViewExceptionItemList_16.png" />
-    <Content Include="index.html" />
+    <Content Include="gulpfile.js" />
+    <Content Include="app\index.html" />
     <Content Include="packages.config" />
     <Content Include="package.json" />
     <Content Include="tsconfig.json" />
     <Content Include="typings.json" />
+    <Content Include="app\scss\styles.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -85,15 +84,17 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\styles\transaction-history.component.css" />
-    <Content Include="styles.css" />
+    <Content Include="app\css\transaction-history.component.css" />
+    <Content Include="app\css\styles.css" />
     <Content Include="systemjs.config.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="dist\" />
+  </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app\episys-server.service.ts" />
     <TypeScriptCompile Include="app\mock-episys-server.service.ts" />

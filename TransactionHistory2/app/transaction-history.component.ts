@@ -39,7 +39,7 @@ class Toolbar {
 @Component({
     selector: 'transaction-history',
     templateUrl: 'app/views/transaction-history.component.html',
-    styleUrls: ['app/styles/transaction-history.component.css'],
+    styleUrls: ['app/css/transaction-history.component.css'],
     providers: [TransactionHistoryService]      // only used in this component
 })
 export class TransactionHistoryComponent implements OnInit {

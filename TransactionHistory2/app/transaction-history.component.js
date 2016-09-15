@@ -59,7 +59,7 @@ var TransactionHistoryComponent = (function () {
         core_1.Component({
             selector: 'transaction-history',
             templateUrl: 'app/views/transaction-history.component.html',
-            styleUrls: ['app/styles/transaction-history.component.css'],
+            styleUrls: ['app/css/transaction-history.component.css'],
             providers: [transaction_history_service_1.TransactionHistoryService] // only used in this component
         }), 
         __metadata('design:paramtypes', [transaction_history_service_1.TransactionHistoryService])
