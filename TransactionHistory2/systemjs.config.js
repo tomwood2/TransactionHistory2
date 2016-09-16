@@ -6,9 +6,9 @@
 	// map tells the System loader where to look for things
 	var map = {
 		'app': 'app', // 'dist',
-		'@angular': 'node_modules/@angular',
-		'@ng-bootstrap':'node_modules/@ng-bootstrap',
-		'rxjs': 'node_modules/rxjs'
+		'@angular': 'lib:node_modules/@angular',
+		'@ng-bootstrap': 'lib:node_modules/@ng-bootstrap',
+		'rxjs': 'lib:node_modules/rxjs'
 	};
 	// packages tells the System loader how to load when no filename and/or no extension
 	var packages = {
@@ -41,6 +41,7 @@
 	// Add package entries for angular packages
 	ngPackageNames.forEach(setPackageConfig);
 	var config = {
+		paths: { 'lib:': 'lib/' },	// paths serve as alias
 		map: map,
 		packages: packages
 	};

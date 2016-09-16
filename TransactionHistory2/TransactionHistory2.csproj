@@ -69,8 +69,20 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\views\transaction-history.component.html" />
+    <Content Include="dist\app\test.js" />
+    <Content Include="dist\index.html" />
+    <Content Include="dist\lib\bootstrap-datepicker.css" />
+    <Content Include="dist\lib\bootstrap-datepicker.min.js" />
+    <Content Include="dist\lib\bootstrap.css" />
+    <Content Include="dist\lib\bootstrap.min.js" />
+    <Content Include="dist\lib\JavaScript.js" />
+    <Content Include="dist\lib\jquery.min.js" />
+    <Content Include="dist\lib\Reflect.js" />
+    <Content Include="dist\lib\shim.min.js" />
+    <Content Include="dist\lib\system.src.js" />
+    <Content Include="dist\lib\zone.js" />
     <Content Include="gulpfile.js" />
-    <Content Include="app\index.html" />
+    <Content Include="index.html" />
     <Content Include="packages.config" />
     <Content Include="package.json" />
     <Content Include="tsconfig.json" />
@@ -92,9 +104,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="dist\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <TypeScriptCompile Include="app\episys-server.service.ts" />
     <TypeScriptCompile Include="app\mock-episys-server.service.ts" />
@@ -123,7 +133,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>11812</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:11812/</IISUrl>
+          <IISUrl>http://localhost:11812</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
