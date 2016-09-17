@@ -6,9 +6,9 @@
 	// map tells the System loader where to look for things
 	var map = {
 		'app': 'app', // 'dist',
-		'@angular': 'lib:node_modules/@angular',
-		'@ng-bootstrap': 'lib:node_modules/@ng-bootstrap',
-		'rxjs': 'lib:node_modules/rxjs'
+		'@angular': 'lib:@angular',
+		'@ng-bootstrap': 'lib:/@ng-bootstrap',
+		'rxjs': 'lib:rxjs'
 	};
 	// packages tells the System loader how to load when no filename and/or no extension
 	var packages = {

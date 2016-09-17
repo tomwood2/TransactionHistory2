@@ -34,31 +34,32 @@ gulp.task('sass', function () {
 		}));
 });
 
-
-
 gulp.task('copy:libs', ['clean'], function () {
-	gulp.src([
-			'node_modules/bootstrap/dist/css/bootstrap.css',
-			'node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.css',
-			'node_modules/bootstrap/dist/js/bootstrap.min.js',
-			'node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js',
-	])
-	.pipe(gulp.dest('dist/lib'));
-
 	gulp.src([
 			'node_modules/core-js/client/shim.min.js',
 			'node_modules/zone.js/dist/zone.js',
 			'node_modules/reflect-metadata/Reflect.js',
 			'node_modules/systemjs/dist/system.src.js',
+
 			'node_modules/jquery/dist/jquery.min.js',
+
+			'node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.css',
+			'node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js',
 	])
 		.pipe(gulp.dest('dist/lib'));
 
 	return gulp.src([
+			'node_modules/bootstrap/dist/fonts/glyphicons-halflings-regular.woff',
+			'node_modules/bootstrap/dist/js/bootstrap.min.js',
+			'node_modules/bootstrap/dist/css/bootstrap.css',
+
 			'node_modules/rxjs/**',
+
 			'node_modules/@angular/**',
+
 			'node_modules/@ng-bootstrap/**'
-	], { base: '.' })
+	], { base: 'node_modules' })
+	//], { base: '.' })
 		.pipe(gulp.dest('dist/lib'));
 });
 
